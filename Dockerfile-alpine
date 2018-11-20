@@ -1,0 +1,5 @@
+FROM alpine
+
+EXPOSE 22
+
+CMD sleep infinity

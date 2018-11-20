@@ -1,0 +1,12 @@
+image: wroney/rpi-mpich-alpine:latest
+manifests:
+  -
+    image: wroney/rpi-mpich-alpine-armv7l:latest
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: wroney/rpi-mpich-alpine-aarch64:latest
+    platform:
+      architecture: arm64
+      os: linux
