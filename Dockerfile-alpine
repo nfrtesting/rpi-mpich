@@ -1,5 +1,38 @@
 FROM alpine
 
+RUN apk update && \
+    apk upgrade && \
+    apk add python sudo build-base
+
+RUN mkdir /tmp/mpich-source
+WORKDIR /tmp/mpich-source
+RUN wget http://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz \
+      && tar xfz mpich-3.2.tar.gz  \
+      && cd mpich-3.2  \
+      && ./configure --disable-fortran  \
+      && make  && make install 
+      
+
+#Clean up to shrink the image
+WORKDIR /
+RUN rm -rf /tmp/*
+
+#Create a User to run as
+ARG USER=mpich-op
+ENV USER ${USER}
+RUN adduser -D ${USER} \
+      && echo "${USER}   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+ENV USER_HOME /home/${USER}
+RUN chown -R ${USER}:${USER} ${USER_HOME}
+ARG WORKDIR=/mpi-workload
+ENV WORKDIR ${WORKDIR}
+RUN mkdir ${WORKDIR}
+RUN chown -R ${USER}:${USER} ${WORKDIR}
+
+WORKDIR ${WORKDIR}
+USER ${USER}
+
 EXPOSE 22
 
 CMD sleep infinity
