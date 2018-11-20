@@ -17,10 +17,10 @@ RUN wget http://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz \
 #install pip
 WORKDIR /tmp      
 RUN wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py
+RUN python get-pip.py
 
 #install python packages
-pip install mpi4py
+RUN pip install mpi4py
 
 #Clean up to shrink the image
 WORKDIR /
