@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mpich-example
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mpich-example
+    spec:
+      containers:
+      - name: mpich-example
+        image: wroney/rpi-mpich-alpine:latest
+        env:
