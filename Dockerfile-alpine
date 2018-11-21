@@ -20,7 +20,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py
 
 #install python packages
-RUN pip install mpi4py
+RUN pip install mpi4py -vv
 
 #Clean up to shrink the image
 WORKDIR /

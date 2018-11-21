@@ -1,5 +1,5 @@
 # pi-mpich
-MPICH for running on a Raspberry PI cluster (based off NLKNguyen/alpine-mpich)
+MPICH for running on a Raspberry PI cluster (based off NLKNguyen/alpine-mpich and ContinUSE/kubernetes-coreos-cluster examples/mpich)
 
 
 This repo, running build.sh, updates the jenkinsci/docker and then runs a build.  It generates images for all three flavors with -$ARCH in the tag:
