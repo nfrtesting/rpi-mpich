@@ -20,11 +20,11 @@ metadata:
   name: mpich-example
   labels:
     name: mpich-example
-  spec:
-    type: LoadBalancer
-    ports:
-    - port: 22
-      targetPort: 22
-    selector:
-      name: mpich-example
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 22
+    targetPort: 22
+  selector:
+    name: mpich-example
       
