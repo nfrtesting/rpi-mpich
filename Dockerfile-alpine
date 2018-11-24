@@ -14,13 +14,11 @@ RUN wget http://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz \
       && ./configure --disable-fortran  \
       && make  && make install 
 
-#install pip
+#install pip & packages
 WORKDIR /tmp      
-RUN wget https://bootstrap.pypa.io/get-pip.py
-RUN python get-pip.py
-
-#install python packages
-RUN pip install mpi4py -vv
+RUN wget https://bootstrap.pypa.io/get-pip.py \
+        && python get-pip.py \
+        && pip install mpi4py -vv
 
 #Clean up to shrink the image
 WORKDIR /
