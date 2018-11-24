@@ -18,7 +18,7 @@ RUN wget http://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz \
 WORKDIR /tmp      
 RUN wget https://bootstrap.pypa.io/get-pip.py \
         && python get-pip.py \
-        && pip install mpi4py -vv
+        && pip install https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-3.0.0.tar.gz -vv
 
 #Clean up to shrink the image
 WORKDIR /
