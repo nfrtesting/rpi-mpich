@@ -12,7 +12,7 @@ spec:
         app: mpich
     spec:
       nodeSelector:
-        label: mpich
+        app: mpich
       containers:
       - name: mpich
         image: wroney/rpi-mpich-alpine:latest
