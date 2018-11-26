@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      name: mpich
+      app: mpich
   template:
     metadata:
       labels:
