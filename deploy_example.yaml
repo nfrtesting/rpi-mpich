@@ -1,31 +1,40 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: apps/v1
+kind: DaemonSet
 metadata:
-  name: mpich-example
+  name: mpich
 spec:
-  replicas: 3
+#  selector:
+#    matchLabels:
+#      name: mpich
   template:
     metadata:
       labels:
-        app: mpich-example
+        name: mpich
     spec:
+#      nodeSelector:
+#        type: mpi
       containers:
-      - name: mpich-example
+      - name: mpich
         image: wroney/rpi-mpich-alpine:latest
-        env:
         imagePullPolicy: Always
+        resources:
+          limits: 
+            memory: 250Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mpich-example
+  name: mpich
   labels:
-    name: mpich-example
+    name: mpich
 spec:
   type: LoadBalancer
   ports:
   - port: 22
     targetPort: 22
   selector:
-    name: mpich-example
+    name: mpich
       
