@@ -3,16 +3,16 @@ kind: DaemonSet
 metadata:
   name: mpich
 spec:
-#  selector:
-#    matchLabels:
-#      name: mpich
+  selector:
+    matchLabels:
+      tier: node
   template:
     metadata:
       labels:
         name: mpich
     spec:
-#      nodeSelector:
-#        type: mpi
+      nodeSelector:
+        type: mpi
       containers:
       - name: mpich
         image: wroney/rpi-mpich-alpine:latest
