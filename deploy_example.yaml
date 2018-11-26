@@ -5,14 +5,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: mpich
+      name: mpich
   template:
     metadata:
       labels:
         app: mpich
     spec:
       nodeSelector:
-        type: mpi
+        label: mpich
       containers:
       - name: mpich
         image: wroney/rpi-mpich-alpine:latest
