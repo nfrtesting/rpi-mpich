@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: mpich
+  app: mpich
 spec:
   selector:
     matchLabels:
-      tier: node
+      app: mpich
   template:
     metadata:
       labels:
-        name: mpich
+        app: mpich
     spec:
       nodeSelector:
         type: mpi
@@ -29,12 +29,12 @@ kind: Service
 metadata:
   name: mpich
   labels:
-    name: mpich
+    app: mpich
 spec:
   type: LoadBalancer
   ports:
   - port: 22
     targetPort: 22
   selector:
-    name: mpich
+    app: mpich
       
